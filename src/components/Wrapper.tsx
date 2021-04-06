@@ -1,13 +1,13 @@
-import employees from "../data/employees.json";
+import Departments from "./Departments";
+import Header from "./Header";
 
-function Wrapper() {
-  const test = employees;
-  debugger;
+const Wrapper = () => {
   return (
     <div className="wrapper">
-      <p>hello and welcome to the party!</p>
+      <Header />
+      <Departments />
     </div>
   );
-}
+};
 
 export default Wrapper;
