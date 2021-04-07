@@ -33,10 +33,7 @@ const DepartmentListItem = ({
 
   // heuristic to hide departments that would usually be practically invisible
   // if the user has selected the "show more button", then we'll show slightly more
-  if (
-    (employeeSharePercentage < 2 && !expanded) ||
-    employeeSharePercentage < 0.75
-  ) {
+  if (employeeSharePercentage < 2 && !expanded) {
     return null;
   }
 
