@@ -1,4 +1,5 @@
-import { departments } from "../data/employeeUtils";
+import { useState } from "react";
+import { departments, totalEmployees } from "../data/employeeUtils";
 
 const departmentColors = [
   "#bd10e0",
@@ -16,14 +17,30 @@ const getDepartmentColor = (index: number) =>
   departmentColors[index % departmentColors.length];
 
 const Departments = () => {
+  const [expanded, setExpanded] = useState(false);
+
   return (
     <div>
       <h2>this is the departments!</h2>
+      <button
+        onClick={() => {
+          setExpanded((expanded) => !expanded);
+        }}
+      >
+        {expanded ? "hide small departments" : "show all departments"}
+      </button>
       <ul className="department--list">
-        {departments.map((department, i, { length }) => {
+        {departments.map((department, i) => {
+          const employeeSharePercentage =
+            (department.numberOfEmployees / totalEmployees) * 100;
+
+          if (employeeSharePercentage < 2 && !expanded) {
+            return null;
+          }
+
           const style = {
             borderColor: getDepartmentColor(i),
-            width: `${100 / length}%`,
+            width: `${employeeSharePercentage}%`,
           };
 
           return (

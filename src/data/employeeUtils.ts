@@ -84,4 +84,9 @@ const getOrderedListOfDepartments = (employees: Employee[]): Department[] => {
 
 const departments = getOrderedListOfDepartments(employees);
 
-export { departments };
+const totalEmployees = departments.reduce(
+  (accumulator, department) => accumulator + department.numberOfEmployees,
+  0
+);
+
+export { departments, totalEmployees };
