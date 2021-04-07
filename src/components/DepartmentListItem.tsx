@@ -20,22 +20,14 @@ const getDepartmentColor = (index: number) =>
 interface DepartmentListItemProps {
   department: Department;
   position: number;
-  expanded: boolean;
 }
 
 const DepartmentListItem = ({
   department,
   position,
-  expanded,
 }: DepartmentListItemProps) => {
   const employeeSharePercentage =
     (department.numberOfEmployees / totalEmployees) * 100;
-
-  // heuristic to hide departments that would usually be practically invisible
-  // if the user has selected the "show more button", then we'll show slightly more
-  if (employeeSharePercentage < 2 && !expanded) {
-    return null;
-  }
 
   const topOffset = 20 + 60 * position;
 
@@ -50,7 +42,8 @@ const DepartmentListItem = ({
       <h3 className="department--list-item--text">{department.name}</h3>
       <p className="department--list-item--text">{department.lead}</p>
       <p className="department--list-item--text">
-        {department.numberOfEmployees} employees
+        {department.numberOfEmployees}{" "}
+        {department.numberOfEmployees > 1 ? "employees" : "employee"}
       </p>
     </li>
   );

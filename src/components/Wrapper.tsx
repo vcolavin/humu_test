@@ -4,8 +4,12 @@ import Header from "./Header";
 const Wrapper = () => {
   return (
     <div className="wrapper">
-      <Header />
-      <Departments />
+      <div className="header--wrapper">
+        <Header />
+      </div>
+      <div className="content--wrapper">
+        <Departments />
+      </div>
     </div>
   );
 };
