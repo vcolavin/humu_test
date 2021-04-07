@@ -43,7 +43,7 @@ const DepartmentListItem = ({
       <p className="department--list-item--text">{department.lead}</p>
       <p className="department--list-item--text">
         {department.numberOfEmployees}{" "}
-        {department.numberOfEmployees > 1 ? "employees" : "employee"}
+        {department.numberOfEmployees === 1 ? "employee" : "employees"}
       </p>
     </li>
   );

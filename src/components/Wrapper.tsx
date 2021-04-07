@@ -4,9 +4,7 @@ import Header from "./Header";
 const Wrapper = () => {
   return (
     <div className="wrapper">
-      <div className="header--wrapper">
-        <Header />
-      </div>
+      <Header />
       <div className="content--wrapper">
         <Departments />
       </div>

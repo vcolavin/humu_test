@@ -1,46 +1,45 @@
-# Getting Started with Create React App
+# Humu hiring challenge
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Hi!
 
-## Available Scripts
+To run this project in development mode: `$ npm run` (in the project root)
 
-In the project directory, you can run:
+To run the built project: `$ npx http-server` (in the build folder)
 
-### `npm start`
+The most interesting "algorithmy" parts of the code can be found in `src/data/employeeUtils.ts`.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The UI code is fairly cut-and-dry React + TypeScript, and doesn't have any bells and whistles like state management libraries.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Answers to questions
 
-### `npm test`
+### 1. Are there any questions would you ask to a designer who sent this mockup and spec?
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+There are some issues with this design as the number of departments increases. They get totally squashed, and everything past the first few departments doesn't provide much useful information to the user. How can we better represent large numbers of departments without squishing them down completely? Perhaps pagination, or being able to scrub through the data?
 
-### `npm run build`
+The aspect where each subsequent department's information gets pushed down a further 30 pixels vertically means that it takes up a lot of visual space without adding any information.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. Did you make any assumptions while developing this page?
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    - I ordered the departments by number of employees.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    - I assumed that the first employee I encountered in a department (while doing a depth-first tree traversal) was the head of that department.
 
-### `npm run eject`
+    - I assumed that brand colors should cycle in order rather than being selected randomly.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+    - Visually, I tried to keep assumptions to a minimum. I didn't add any interactivity or hover states.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 3. You don’t need to make this responsive but if given more time, how would you make it responsive?
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+The major thing is add a breakpoint below which departments are listed top-to-bottom, rather than horizontally. After that, I would fine tune spacing and font weights to ensure
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 4. If given more time, how would you improve readability and accessibility?
 
-## Learn More
+    - I would work with the designer to come up with a design that makes the information more readable once there are large amounts of employees and departments. The current design does some data visualization by representing department size as the relative width of that department's card.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    - I would ensure that all interactive elements are usable with the keyboard, prioritizing the use of semantically correct HTML, and rebuilding any native browser accessibility features that I overwrote with JavaScript.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    - I would audit font colors and sizes to ensure they are compliant with WCAG readability guidelines.
+
+    - I would audit this project using a screenreader to ensure it is navigable without visual aids.
+
+    - I would test the site at zoom levels up to 200% to ensure that it remains usable when zoomed in.

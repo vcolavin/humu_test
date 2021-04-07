@@ -28,7 +28,7 @@ type DepartmentsRecords = { [key: string]: Department };
 
 // getDepartmentRecords does a recursive, depth-first traversal of the employee tree
 // to generate an object mapping department names to their data
-// it could be faster, but only happens once per page load.
+// it could be faster, but it only happens once per page load.
 const getDepartmentRecords = (
   employees: Employee[],
   departmentsObject: DepartmentsRecords = {}
@@ -41,13 +41,15 @@ const getDepartmentRecords = (
       const accumulatorCopy = { ...accumulator };
 
       // if the department has not yet been encountered,
-      // create the initial record
+      // create the initial record.
       if (!accumulatorCopy[department]) {
         // assume the first employee encountered in a department
         // is the head of that department
+        const departmentLead = `${firstName} ${lastName}`;
+
         accumulatorCopy[department] = {
           numberOfEmployees: 1,
-          lead: `${firstName} ${lastName}`,
+          lead: departmentLead,
           name: department,
         };
       } else {
