@@ -7,13 +7,13 @@ const Departments = () => {
 
   return (
     <div>
-      <h2>this is the departments!</h2>
+      <h2>Departments</h2>
       <button
         onClick={() => {
           setExpanded((expanded) => !expanded);
         }}
       >
-        {expanded ? "hide small departments" : "show all departments"}
+        {expanded ? "hide small departments" : "show more departments"}
       </button>
       <ul className="department--list">
         {departments.map((department, i) => (

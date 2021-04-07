@@ -1,12 +1,22 @@
-* {
+html {
   font-family: sans-serif;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
 }
 
 h1,
 h2,
 h3,
 h4 {
-  font-weight: 400;
+  font-weight: 600;
 }
 
 .department--list {
@@ -14,6 +24,7 @@ h4 {
   margin: 0;
   padding: 0;
   width: 100%;
+  display: flex;
 }
 
 .department--list-item {
@@ -21,6 +32,7 @@ h4 {
   display: inline-block;
   border-top: 5px solid;
   border-left: 2px solid;
+  height: fit-content;
 }
 
 .department--list-item--text {
