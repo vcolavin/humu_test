@@ -19,6 +19,12 @@ h4 {
 .department--list-item {
   margin: 0;
   display: inline-block;
-  border-top: 3px solid;
-  border-left: 1px solid;
+  border-top: 5px solid;
+  border-left: 2px solid;
+}
+
+.department--list-item--text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
