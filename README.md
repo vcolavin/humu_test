@@ -22,6 +22,10 @@ The aspect where each subsequent department's information gets pushed down a fur
 
 - I ordered the departments by number of employees.
 
+- I assumed the width of each department card corresponded to its proportion of total employees
+
+- I assumed we would show all departments, regardless of how small they were
+
 - I assumed that the first employee I encountered in a department (while doing a depth-first tree traversal) was the head of that department.
 
 - I assumed that brand colors should cycle in order rather than being selected randomly.

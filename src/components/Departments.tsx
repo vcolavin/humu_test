@@ -3,7 +3,7 @@ import DepartmentListItem from "./DepartmentListItem";
 
 const Departments = () => {
   return (
-    <div className="header--wrapper">
+    <>
       <h2 className="department--title">Departments</h2>
       <ul className="department--list">
         {departments.map((department, i) => (
@@ -14,7 +14,7 @@ const Departments = () => {
           />
         ))}
       </ul>
-    </div>
+    </>
   );
 };
 
