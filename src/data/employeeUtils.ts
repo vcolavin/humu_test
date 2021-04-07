@@ -17,28 +17,33 @@ export interface Department {
   name: string;
 }
 
+// DepartmentsRecords is an intermediate type.
+// In general, React has the easiest time consuming lists
+// e.g. `departments.map(dep => <li>dep.name</li>)`
+// but because we're reducing lists of employees,
+// it's much easier to use a map/dictionary object as the accumulator.
+// So we start by generating the map,
+// then convert it to a list before sending it to the components.
 type DepartmentsRecords = { [key: string]: Department };
 
-// getDepartmentRecords does a depth-first traversal of the employee tree
+// getDepartmentRecords does a recursive, depth-first traversal of the employee tree
 // to generate an object mapping department names to their data
-// it uses an object rather than a list
-// because it's easier for reduce to return an object
-// it's not very optimized, but only happens once per page load.
+// it could be faster, but only happens once per page load.
 const getDepartmentRecords = (
   employees: Employee[],
   departmentsObject: DepartmentsRecords = {}
 ): DepartmentsRecords => {
   return employees.reduce(
     (accumulator, { department, firstName, lastName, reports }) => {
-      // copying the accumulator so that we can mutate it
-      // without worrying about mutating the original argument
+      // start by cloning the accumulator so that we can mutate it
+      // without worrying about mutating the passed-in argument
       // this has a computational cost but gives us some safety
       const accumulatorCopy = { ...accumulator };
 
       // if the department has not yet been encountered,
       // create the initial record
       if (!accumulatorCopy[department]) {
-        // assume the first employe encountered in that department
+        // assume the first employee encountered in a department
         // is the head of that department
         accumulatorCopy[department] = {
           numberOfEmployees: 1,
@@ -67,12 +72,11 @@ const getDepartmentRecords = (
 };
 
 const getOrderedListOfDepartments = (employees: Employee[]): Department[] => {
-  // this intermediate data structure is easier to generate,
-  // and then we convert it to a list, which is more useful for the UI
+  // generate the department dictionary
   const departmentRecords = getDepartmentRecords(employees);
 
-  // now convert the object to an array
-  // ordered by how many employees they have
+  // now retrieve a list of departments
+  // and order it by number of employees
   return Object.values(departmentRecords).sort(
     (a, b) => b.numberOfEmployees - a.numberOfEmployees
   );
